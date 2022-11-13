@@ -1,0 +1,141 @@
+.form-contact {
+	color: black;
+	text-align: center;
+	border-radius: 30%
+}
+.values {
+	text-align: center;
+	height: 30px;
+	background-color: #B0E0E6;
+	border: 1px solid #999;
+	border-radius: 10px;
+	font-size: 12pt;
+}
+
+#login form input[type="checkbox"] {
+	text-align: center;
+	font-size: 30px;
+	height: 20px;
+}
+h1{
+	text-align: left;
+	padding-left: 200px;
+	margin: 100px;
+	font-size: 30px;
+	height: 30px;
+	color: #ffffff;
+}
+a:not([href]){
+	text-align: center;
+	font-size: 40px;
+	color: #ffffff
+}
+label{
+	text-align: center;
+	font-size: 18px;
+	color: #ffffff
+}
+
+::placeholder {color: #ffffff;}
+
+#login form input[type="submit"] {
+	background-color: #e3bc3e;
+	border-radius: 10px;
+	font-size: 12pt;
+	text-align: center;
+	height: 30px;
+}
+
+#login {
+	text-align: left;
+	padding-left: 200px;
+}
+
+#login form span {
+
+	background-color: #363b41;
+	border-radius: 3px 0px 0px 3px;
+	-moz-border-radius: 3px 0px 0px 3px;
+	-webkit-border-radius: 3px 0px 0px 3px;
+	color: #606468;
+	display: block;
+	float: left;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	width: 50px;
+}
+
+#login form input {
+	height: 50px;
+	outline:none;
+}
+
+#login form input[type="text"], input[type="password"] {
+	background-color: #3b4148;
+	border-radius: 10px;
+	-moz-border-radius: 0px 3px 3px 0px;
+	-webkit-border-radius: 0px 3px 3px 0px;
+	color: #606468;
+	margin-bottom: 5px;
+	padding: 0 16px;
+	width: 198px;
+	border-radius: 10px;
+}
+
+#register form input:focus {
+	color:#fff;
+}
+
+#login form input[type="submit"] {
+	-webkit-border-radius: 21px;
+	border-radius: 10px;
+	background-color: #e3bc3e;
+	color: #eee;
+	font-weight: bold;
+	margin-bottom: 2em;
+	text-transform: uppercase;
+	cursor:pointer;
+	width: 230px;
+	height: 50px;
+}
+#login form input[type="checkbox"] {
+	border-radius: 10px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	color: #eee;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor:pointer;
+	width: 30px;
+}
+/*body {*/
+/*	background-color: #3AAFA9;*/
+/*}*/
+p{
+	color: #eee;
+}
+.inputs {
+	margin-top: 40px;
+	border: 5px solid white;
+	background-color: #014a98;
+	width: 300px;
+	height: 470px;
+	border-radius: 20px;
+}
+
+html{
+  background-image: url(https://phonoteka.org/uploads/posts/2021-05/1621014256_25-phonoteka_org-p-fon-dlya-vizitki-obuv-28.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+a{
+	color: white;
+	margin-top: 1px;
+}
