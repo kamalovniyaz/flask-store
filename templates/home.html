@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Website</title>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="fontawesome-free/css/all.min.css">
+</head>
+<body>
+
+	<div class="navigation">
+		<div class="logo">
+			<a href="/"><img src="https://image.winudf.com/v2/image/Y29tLnNvdW5kYm9hcmQuYmFza2V0YmFsbGFwcF9pY29uXzE1MjMwMDY0MzBfMDUx/icon.png?w=100&fakeurl=1"></a>
+		</div>
+
+		<div class="nav-menu">
+			<ul class="menu">
+				<li class="nav-item"><a href="#" class="nav-link">Мужчины</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">Женщины</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">О нас</a></li>
+			</ul>
+		</div>
+		<div class="search-block">
+			<div class="searsh">
+				<input type="text" class="search-form" placeholder="Поиск">
+				<a href="#" class="search-btn"><i class="fas fa-search"></i></a>
+			</div>
+		</div>
+
+		<div class="personal-item">
+			<div class="auth">
+				<div class="car">
+					<a href="/basket" class="auth-link"><i class="fas fa-shopping-cart"></i>Корзина</a>
+				</div>
+				{% if not online %}
+					<div class="login">
+						<a href="/login" class="auth-link"><i class="fas fa-user-circle"></i>Войти</a>
+					</div>
+					<div class="register">
+						<a href="/register" class="auth-link"><i class="fas fa-user-circle"></i>Регистрация</a>
+					</div>
+				{% else %}
+					<div class="profile">
+						<a href="/profile" class="auth-link"><i class="fas fa-user-circle"></i>Профиль</a>
+					</div>
+					<div class="logout">
+						<a href="/logout" class="auth-link"><i class="fas fa-user-circle"></i>Выйти</a>
+					</div>
+				{% endif %}
+
+
+			</div>
+		</div>
+	</div>
+	{% for i in item %}
+	<div class="section"> <!-- Основная секция -->
+  <div class="container"> <!-- Основной контейнер -->
+    <div class="catalog"> <!-- Блок каталога -->
+      <div class="catalog__flex"> <!-- Родитеский блок сетки -->
+        <div class="catalog__col"> <!-- Дочерний блок сетки -->
+          <div class="catalog__card card" onclick="location.href='http://127.0.0.1:5000/item';", id=i.id> <!-- Блок с контентом, в данном случае карточка, все стили этого блока уже не относятся к сетке -->
+			  <div class="card__title">{{ i.title }}</div>
+			  <img class=item_image src="{{ url_for('static', filename='1.jpeg') }}", width="300", height="300">
+			  <div class="card__price">{{ i.price }} руб</div>
+            <div class="card__button"><a href="">Добавить в корзину</a></div>
+          </div>
+        </div>
+		  </a>
+		  {% endfor %}
+
+
+			<div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
