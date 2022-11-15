@@ -38,9 +38,8 @@ class FDataBase():
         return True
 
     def delUser(self, email):
-        email = "radfis@mail.ru"
         try:
-            self.__cur.execute(f"DELETE FROM users WHERE email = '{email}' LIMIT 1")
+            self.__cur.execute("DELETE FROM users WHERE email == (?)", (email,))
             self.__db.commit()
         except sqlite3.Error as e:
             print("Ошибка удаления пользователя в БД" + str(e))
@@ -62,6 +61,16 @@ class FDataBase():
 
         return False
 
+    def updateUser(self, email, password):
+        try:
+            print(email, password)
+            self.__cur.execute("UPDATE users SET password == (?) WHERE email == (?)", (password,email))
+            self.__db.commit()
+
+        except sqlite3.Error as e:
+            print("Ошибка обновления данных из БД" + str(e))
+
+        return False
     def getUserByEmail(self, email):
         try:
             self.__cur.execute(f"SELECT * FROM users WHERE email = '{email}' LIMIT 1")
@@ -87,7 +96,7 @@ class FDataBase():
             print("Ошибка чтения из БД")
         return []
 
-    def addItem(self, id, title, description, price):
+    def addItem(self, id, title, description, size, price):
         try:
             self.__cur.execute(f"SELECT COUNT() as 'count' FROM shop where id LIKE '{id}'")
             res = self.__cur.fetchone()
@@ -96,13 +105,13 @@ class FDataBase():
                 return False
 
             tm = math.floor(time.time())
-            self.__cur.execute("INSERT INTO shop VALUES (NULL,?,NULL,?,?)", (title, discription, price))
+            self.__cur.execute("INSERT INTO shop VALUES (NULL,?,NULL,?,?,?)", (title, description,size, price))
             self.__db.commit()
         except sqlite3.Error as e:
             print("Ошибка добавления товара в БД" + str(e))
             return False
 
-    def getItemById(self,id):
+    def getItemById(self, id):
         try:
             self.__cur.execute(f"SELECT * FROM shop WHERE id = '{id}' LIMIT 1")
             res = self.__cur.fetchone()
@@ -113,6 +122,31 @@ class FDataBase():
             return res
         except sqlite3.Error as e:
             print("Ошибка получения данных из БД" + str(e))
+
+    def getItemSize(self, id):
+        try:
+            self.__cur.execute(f"SELECT size FROM shop WHERE id = '{id}' LIMIT 1")
+            res = self.__cur.fetchone()
+            if not res:
+                print("Товар не найден")
+                return False
+
+            return res
+        except sqlite3.Error as e:
+            print("Ошибка получения данных из БД" + str(e))
+
+    def getPhotoById(self, id):
+        try:
+            self.__cur.execute(f"SELECT photo FROM shop WHERE id = '{id}' LIMIT 1")
+            res = self.__cur.fetchone()
+            if not res:
+                print("Товар не найден")
+                return False
+
+            return res
+        except sqlite3.Error as e:
+            print("Ошибка получения данных из БД" + str(e))
+
 
     # def getItemById(self, id):
     #     try:

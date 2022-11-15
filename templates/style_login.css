@@ -11,7 +11,17 @@
 	border-radius: 10px;
 	font-size: 12pt;
 }
-
+.js-input-psw{
+	text-align: center;
+	height: 30px;
+	background-color: #B0E0E6;
+	border: 1px solid #999;
+	border-radius: 10px;
+	font-size: 12pt;
+}
+.input.error{
+	border-color: red;
+}
 #login form input[type="checkbox"] {
 	text-align: center;
 	font-size: 30px;
@@ -138,4 +148,71 @@ html{
 a{
 	color: white;
 	margin-top: 1px;
+}
+#update form input[type="submit"] {
+	-webkit-border-radius: 21px;
+	border-radius: 10px;
+	background-color: #e3bc3e;
+	color: #eee;
+	font-weight: bold;
+	margin-bottom: 2em;
+	text-transform: uppercase;
+	cursor:pointer;
+	width: 230px;
+	height: 50px;
+}
+.update-user a{
+	display: inline-block;
+	margin-top: 10px;
+	font-size: 20px;
+	color: white;
+	border: 3px black solid;
+	border-radius: 10px;
+	font-family: "Poor Richard";
+	text-align: left;
+	text-decoration: none;
+}
+.delete-user a{
+	display: inline-block;
+	margin-top: 10px;
+	font-size: 20px;
+	color: white;
+	border: 3px black solid;
+	border-radius: 10px;
+	font-family: "Poor Richard";
+	text-align: left;
+	text-decoration: none;
+}
+label{
+	font-size: 25px;
+	color: white;
+	font-family: "Poor Richard";
+	text-align: left;
+	text-decoration: none;
+}
+.order-user a{
+	display: inline-block;
+	margin-top: 10px;
+	font-size: 20px;
+	color: white;
+	border: 3px black solid;
+	border-radius: 10px;
+	font-family: "Poor Richard";
+	text-align: left;
+	text-decoration: none;
+}
+#profile, #update {
+	text-align: left;
+	padding-left: 200px;
+}
+.flash{
+	background-color: #red;
+	border: 3px red solid;
+	border-radius: 3px 0px 0px 3px;
+	color: white;
+	display: block;
+	float: left;
+	line-height: 50px;
+	text-align: center;
+	border-color: red;
 }

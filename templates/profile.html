@@ -1,12 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Профиль</title>
+	<meta charset="UTF-8">
+	<title>Website</title>
+	<link rel="stylesheet" href="style_login.css">
+	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="fontawesome-free/css/all.min.css">
+	<script src="/static/js/profile.js"></script>
 </head>
 <body>
-      Вы авторизованы как: {{ name }}
-      <a href="/delete" class="auth-link"><i class="fas fa-user-circle"></i>Удалить пользователя</a>
-  </form>
+	<div class="navigation">
+		<div class="logo">
+			<a href="/"><img src="https://image.winudf.com/v2/image/Y29tLnNvdW5kYm9hcmQuYmFza2V0YmFsbGFwcF9pY29uXzE1MjMwMDY0MzBfMDUx/icon.png?w=100&fakeurl=1"></a>
+		</div>
+    </div>
+	<div id="profile">
+
+        <form action="/update" method="post" class="form-contact">
+            <div class="inputs">
+				<label>Вы авторизованы как: {{ name }}</label>
+				<div class="order-user">
+					<a href="/orders"></i>Посмотреть заказы</a>
+				</div>
+				<div class="update-user">
+					<a href="/update"></i>Изменить пароль</a>
+				</div>
+				<div class="delete-user">
+					<a href="/delete"></i>Удалить пользователя</a>
+				</div>
+            </div>
+
+    </div>
 </body>
 </html>
+

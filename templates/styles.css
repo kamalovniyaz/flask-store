@@ -17,6 +17,7 @@
 	font-size: 30px;
 	height: 20px;
 }
+
 h1{
 	text-align: left;
 	padding-left: 200px;
@@ -140,3 +141,51 @@ html{
 	margin-top: -10px;
 }
 
+.profile {
+	margin-top: 40px;
+	border: 5px solid white;
+	background-color: #014a98;
+	width: 300px;
+	height: 470px;
+	border-radius: 20px;
+}
+.update-user a{
+	display: inline-block;
+	margin-top: 10px;
+	font-size: 20px;
+	color: white;
+	border: 3px black solid;
+	border-radius: 10px;
+	font-family: "Poor Richard";
+	text-align: left;
+	text-decoration: none;
+}
+.delete-user a{
+	display: inline-block;
+	margin-top: 10px;
+	font-size: 20px;
+	color: white;
+	border: 3px black solid;
+	border-radius: 10px;
+	font-family: "Poor Richard";
+	text-align: left;
+	text-decoration: none;
+}
+label{
+	font-size: 25px;
+	color: white;
+	font-family: "Poor Richard";
+	text-align: left;
+	text-decoration: none;
+}
+.order-user a{
+	display: inline-block;
+	margin-top: 10px;
+	font-size: 20px;
+	color: white;
+	border: 3px black solid;
+	border-radius: 10px;
+	font-family: "Poor Richard";
+	text-align: left;
+	text-decoration: none;
+}

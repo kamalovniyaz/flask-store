@@ -1,3 +1,5 @@
+import time
+from time import sleep
 from flask import Flask, render_template, send_from_directory
 import random
 from flask import Flask, render_template, request, make_response, session,g, redirect, url_for, flash
@@ -21,7 +23,7 @@ app = Flask(__name__, static_url_path="/static")
 app.config.from_object(__name__)
 
 app.config.update(dict(DATABASE=os.path.join(app.root_path, "shop.db")))
-app.config['UPLOAD_FOLDER'] = r"C:\Users\KamaL\PycharmProjects\ORISProject\static\img"
+app.config['UPLOAD_FOLDER'] = r"C:/Users/KamaL/PycharmProjects/ORISProject/static/img"
 # app.register_error_handler(404, page_not_found)
 
 login_manager = LoginManager(app)
@@ -82,9 +84,17 @@ def home():
     else:
         return render_template("home.html", menu=dbase.getMenu(),item = dbase.getShop())
 
-@app.route("/item")
-def item():
-    return render_template("item.html", menu = dbase.getMenu(), id=item.id)
+
+
+@app.route("/add_to_basket")
+@login_required
+def add_to_basket(self, user_id, id):
+    basket = id
+
+@app.route("/item/<int:id>/")
+def item(id):
+    sizes = dbase.getItemSize(id)
+    return render_template("item.html", menu = dbase.getMenu(),item = dbase.getShop(), id=id, sizes=sizes)
 
 
 @app.route("/login", methods=["POST","GET"])
@@ -94,12 +104,14 @@ def login():
 
     if request.method == "POST":
         user = dbase.getUserByEmail(request.form['email'])
+        if len(request.form["email"]) < 2:
+            flash("Имя пользователя должно быть более 4 символов", "error")
         if user and check_password_hash(user['password'], request.form['password']):
             userlogin = UserLogin().create(user)
             rm = True if request.form.get("remainme") else False
             login_user(userlogin, remember=rm)
             return redirect(url_for("home"))
-        print("Неверная пара логин пароль","error")
+        flash("Неверная пара логин/пароль")
 
     return render_template("login.html", menu=dbase.getMenu(), title="Авторизация")
 
@@ -119,10 +131,9 @@ def register():
             hash = generate_password_hash(request.form['password'])
             res = dbase.addUser(request.form['name'], request.form['email'], hash)
             if res:
-                print("Вы успешно зарегистрированы", "success")
                 return redirect(url_for("login"))
             else:
-                flash("Ошибка при добавлении в БД", "error")
+                print("Ошибка при добавлении в БД", "error")
         else:
             flash("Поля заполнены неверно","error")
     return render_template("register.html", menu=dbase.getMenu(), title="Регистрация")
@@ -143,7 +154,7 @@ def logout():
 
 @app.route("/delete", methods=["POST", "GET"])
 def delete_user():
-    email = current_user.get_email
+    email = current_user.get_email()
     dbase.delUser(email)
     return redirect(url_for("logout"))
 
@@ -167,7 +178,33 @@ def profile():
 @app.route("/update", methods=["POST", "GET"])
 @login_required
 def update():
-    return render_template("update.html", menu = dbase.getMenu(), name=current_user.get_name())
+    return render_template("update.html", menu = dbase.getMenu(), item = dbase.getShop(), name=current_user.get_name())
+
+@app.route("/change", methods=["POST", "GET"])
+@login_required
+def change():
+    password = generate_password_hash(request.form['password'])
+    email = current_user.get_email()
+    dbase.updateUser(email, password)
+    return redirect(url_for("login"))
+
+def readImage(id):
+   try:
+       filename = db.getPhotoById(id)
+       file = open(app.config['UPLOAD_FOLDER'] + filename, "r")
+       content = file.read()
+       return render_template('home.html', content=content)
+   except:
+       print("notwork")
+def readAva(id):
+    try:
+        with open(f"{app.config['UPLOAD_FOLDER']}/{id}.jpeg", "rb") as f:
+            return f.read()
+    except IOError as e:
+        print(e)
+        return False
+
+
 
 @app.route("/styles.css")
 def styles():
@@ -186,13 +223,20 @@ def styly_login():
 @app.route("/photo")
 @login_required
 def photo():
-    img = current_user.getAvatar(app)
-    if not img:
-        return ""
+    try:
+        with open(f"{app.config['UPLOAD_FOLDER']}/{id}.jpeg", "rb") as f:
+            return f.read()
+    except IOError as e:
+        print(e)
+        return False
 
-    h = make_response(img)
-    h.headers["Content-Type"] = "image/png"
-    return h
+
+@app.route("/item/int<shop_id>")
+def shopId():
+    pass
+
+
+
 
 def render_picture(data):
 

@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS shop (
     title varchar NOT NULL,
     photo blob NOT NULL,
     description text,
+    size text NOT NULL,
     price integer NOT NULL,
     isActive boolean NOT NULL
 );
@@ -18,5 +19,11 @@ CREATE TABLE IF NOT EXISTS users (
     name text NOT NULL,
     email text NOT NULL,
     password text NOT NULL,
+    time integer NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS basket (
+    id integer PRIMARY KEY AUTOINCREMENT,
+    item text NOT NULL,
     time integer NOT NULL
 );
